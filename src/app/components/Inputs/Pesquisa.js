@@ -6,4 +6,4 @@ const Pesquisa = ({valor, onChange, placeholder}) =>(
 
     </div>
 )
-export default Pesiquisa;
+export default Pesquisa;
