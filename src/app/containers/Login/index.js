@@ -3,6 +3,12 @@ import {Link} from 'react-router-dom'
 
 import Titulo from '../../components/Texto/Titulo'
 
+import Input from '../../components/Inputs/Simples'
+
+import Checkbox from '../../components/Inputs/Checkbox'
+
+import Button from '../../components/Button/Simples'
+
 class Login extends Component{
     
     state={
@@ -15,11 +21,11 @@ class Login extends Component{
     onChangeCheckbox = (field) => this.setState({ [field]: !this.state[field] })
 
     render(){
-        const { email, senha } = this.state
+        const { email, senha, opcaoLembrar} = this.state
         return(
             <div className="Login">
                 <div className="card">
-                        <Titulo titulo="h1" titulo= "Loja TI"/>
+                        <Titulo tipo="h1" titulo= "Loja TI"/>
 
                         <p> Faça seu LogIN abaixo</p>
 
@@ -35,15 +41,16 @@ class Login extends Component{
                             onChange={(ev) => this.onChangeInput("senha", ev )} />   
                         <div>
                             <div>
-                                <Checkbox value={opcaoLembrar} 
+                                <Checkbox
+                                value={opcaoLembrar} 
                                 onChange={()=> this.onChangeCheckbox("opcaoLembrar")}
-                                label="Lembrar"/>
+                                label="Lembrar?"/>
                             </div>
                             <div>
                                <Link to="/recuperar-senha">Esqueceu sua senha?</Link> 
                             </div>
                         </div>
-                               
+                         <Button type="success" rota="/" label="ENTRAR"/>      
                 </div>
             </div>
         )

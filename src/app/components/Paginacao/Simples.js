@@ -5,7 +5,7 @@ const Paginacao = ({total, atual, limite,  onClick }) => {
     return (
         <div className="Paginacao flex horizontal">
             {
-                [... Array(numeroPaginas).keys()].map((numero, idx) => {
+                [...Array(numeroPaginas).keys()].map((numero,idx)=>{
                     const numeroAtualDaPagina = numero * limite;
                     return(
                         <div 
