@@ -23,7 +23,6 @@ class DetalhesDaEntrega extends Component{
 
     handleSubmit =(value) => {
         this.setState({ codigoDeRastreamento : value})
-        console.log(value)
         alert("SALVO!")
     }
 
