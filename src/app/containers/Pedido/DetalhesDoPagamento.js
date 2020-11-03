@@ -11,11 +11,6 @@ class DetalhesDoPagamento extends Component{
         ]
     }
 
-    onRemoveListaDinamica = (index) =>{
-        let {status} = this.state
-        status = status.filter((item, _index) => _index !== index )
-        this.setState({ status })
-    }
 
     onAddListaDinamica = (texto) => {
         if(!texto) return false;
@@ -33,7 +28,7 @@ class DetalhesDoPagamento extends Component{
                 <Titulo tipo="h4" titulo="Pagamento" />
                 <ListaDinamica 
                     dados={status}
-                    ondAdd={() =>this.onAddListaDinamica} />
+                    ondAdd={this.onAddListaDinamica} />
             </div>
         )
     }

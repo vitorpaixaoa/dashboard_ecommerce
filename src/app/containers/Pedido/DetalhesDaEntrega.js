@@ -39,6 +39,7 @@ class DetalhesDaEntrega extends Component{
                     handleSubmit={(value)=> this.handleSubmit(value)}
                     name={"codigoDeRastreamento"}
                 />
+                <br/>
                 <ListaDinamica 
                     dados={status}
                     onAdd={this.onAddListaDinamica} />

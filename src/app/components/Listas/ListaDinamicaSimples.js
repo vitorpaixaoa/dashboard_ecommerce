@@ -5,31 +5,31 @@ import ButtonSimples from '../Button/Simples'
 
 
 class ListaDinamicaSimples extends React.Component {
-    state= {texto:""}
-
-    onChangeInput = (ev) => this.setState({texto: ev.target.value})
- 
+    state = { 
+        texto: ""
+    }
+    
     onAdd(){
         const {texto} = this.state
-        
         this.props.onAdd(texto)
-        this.setState({ texto:""  })
+        this.setState({ texto:""})
     }
+    onChangeInput = (ev) => this.setState({texto: ev.target.value})
 
     render(){
-            const { dados, onRemove} = this.props
+            const { dados   , onRemove} = this.props
             return(
                 <div className="flex vertical">
                     {
                         dados.map((item, idx) =>(
                             <div key={idx} className="flex horizontal"> 
-                                 <div className="flex-3 flex flex-start">
+                                 <div className="flex flex-start">
                                     <span>{item}</span>
                                  </div>
                                  {
                                     onRemove && 
                                         (
-                                            <div className="flex-1 flex flex-center">
+                                            <div className=" flex flex-center">
                                                 <ButtonSimples 
                                                 type="danger" 
                                                 label=" - " 
@@ -52,7 +52,7 @@ class ListaDinamicaSimples extends React.Component {
                         <div className=" flex flex-center">
                             <ButtonSimples
                                 type="success"
-                                onClick={this.onChangeInput}
+                                onClick={this.onAdd}
                                 label=" + " />
                         </div>
                     </div>
