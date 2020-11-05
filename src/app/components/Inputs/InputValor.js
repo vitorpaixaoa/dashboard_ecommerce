@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import Input from '../../components/Inputs/Simples'
+import ButtonSimples from '../Button/Simples'
 
 class InputValor extends Component {
     state = {
@@ -19,7 +20,7 @@ class InputValor extends Component {
     renderForm(){
         const {value} = this.state;
         return(
-            <div className="Input-valor input-valor-open">
+            <div className="Input-Valor flex input-valor-open">
                 <div>
                     <Input 
                         value={value}
@@ -27,23 +28,30 @@ class InputValor extends Component {
                         name={this.props.name}
                     />
                 </div>
-                <div onClick={() => this.handleSubmit(value)}>
-                    <i className="fas fa-check"/>
-                </div>
-                <div onClick={this.toggleForm}>
-                    <i className="fas fa-times"/>
-                </div>
+                <div className="flex flex-center">
+                        <ButtonSimples 
+                            type="success button-small"
+                            onClick={() => this.handleSubmit(value)}
+                            label={(<i className="fas fa-check"/>)}/>
+                        <ButtonSimples 
+                            type="danger button-small"
+                            onClick={() => this.toggleForm()}
+                            label={(<i className="fas fa-times" />)}/>
+                    </div>
             </div>
+                
         )
     }
     renderValue(){
         const {value} = this.props
         return (
-            <div className="Input-Valor">
-                <span>{value}</span>
-                <div onClick={() => this.toggleForm()}>
-                    <i className="fas fa-edit" />
-                </div>
+            <div className="Input-Valor flex" onClick={() => this.toggleForm()}>
+                <span className="input">{value}</span>
+               <div className="flex flex-center"> 
+                <ButtonSimples 
+                        type="warning "
+                        label={(<i className="fas fa-edit" />)}/>
+               </div>
             </div>
         )
     }

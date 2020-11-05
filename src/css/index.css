@@ -4,12 +4,13 @@
   --cor-primaria: rgb(255, 132, 0);
   --cor-secundaria: #0fc224;
   --cor-terciaria: rgba(172, 9, 9, 0.796);
-  --cor-amarelo: rgb(213, 213, 8);
+  --cor-amarelo: rgb(249, 249, 0);
 
   --cor-preta:#000;
   --cor-branca: #FFF;
-  --cor-branca-arosada: #FFE8E8;
+  --cor-branca-arosada: #ddd2d2;
   --cor-cinza-claro: #EEE;
+  --cor-cinza-medio: rgb(184, 182, 182);
   --cor-cinza-escuro: #222
 }
 body {
@@ -177,6 +178,9 @@ table.simples th:last-child{
 .button-danger{
   background-color: var(--cor-terciaria);
 }
+.button-warning{
+  background-color: var(--cor-amarelo);
+}
 .button-success{
   background-color: var(--cor-secundaria);
   color: var(--cor-branca);
@@ -228,10 +232,50 @@ border: 1px solid var(--cor-cinza-escuro);
   border: 1px solid var(--cor-cinza-escuro);
   border-radius: 15px;
   font-size: 0.95rem;
+  
+}
+.Input-Simples label{
+  margin: 5px 0px 2px 0;
+  font-weight: bold;
 }
 
 .border-green{
   border-left: 4px solid var(--cor-secundaria);
   padding-left: 5px;
   margin: 2px 0;
+}
+.Input-Valor{
+    margin: 10px 0;
+
+}
+.Input-Valor input, .Input-Valor .input {
+  border: 1px solid var(--cor-cinza-escuro);
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.Input-Valor .input{
+  background-color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-medio);
+}
+.app-footer {
+  background: #dcdcdc;
+  padding: .5rem 2rem;
+  text-align: right;
+}
+
+.app-footer__message {
+  color: #595959;
+  font-family: sans-serif;
+}
+
+.Login .Card {
+  width: 95%;
+  max-width: 450px;
+}
+
+.Login a  {
+  text-decoration: none;
+  color: #595959;
 }

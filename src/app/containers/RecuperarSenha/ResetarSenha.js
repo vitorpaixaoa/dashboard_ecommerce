@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 import Titulo from '../../components/Texto/Titulo'
 import Input from '../../components/Inputs/Simples'
 import Button from '../../components/Button/Simples'
+import logo from '../../../img/logo.png'
 
 class ResetarSenha extends Component{
     state = {
@@ -14,8 +15,11 @@ class ResetarSenha extends Component{
     render(){
         const {senha, confirmarSenha} = this.state
         return(
-            <div className="Resetar-Senha">
-                <Titulo tipo="h1" titulo="LOJA TI" />
+            <div className="Resetar-Senha flex flex-center">
+                <div className="Card">
+                <div className="flex flex-center" >
+                        <img src={logo}></img>
+                </div>
                 <br/>
                 <div>
                     <p>
@@ -31,16 +35,18 @@ class ResetarSenha extends Component{
                         onChange={(ev) => this.onChangeInput(senha, ev) } />
 
                     <Input 
-                        label="confirmarSenha" 
+                        label="Confirmar senha" 
                         type="password" 
                         value={senha} 
                         onChange={(ev) => this.onChangeInput(confirmarSenha, ev) } />
                 </div>
+                <br/><br/>
 
-                <div>
+                <div className="flex flex-center">
                     <Button type="success" rota="/login" label="RESETAR SENHA" />
                 </div>
 
+                </div>
             </div>
         )
     }
