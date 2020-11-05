@@ -23,13 +23,13 @@ const ListItems = ({ open, history }) => {
                 items.map((item,idx)=> 
                         <Link to={item.rota} key={idx}>
                         <div className={`menu-item ${ localAtual === item.rota ? "menu-item-active" : ""} flex horizontal`}>
-                            <div className="flex-1 flex-center">
+                            <div className="flex-1 flex-center ">
                                 {item.icone}
                             </div>
                             {
                             open && 
                                 (
-                                    <div className="flex-2 flex-start" >
+                                    <div className="flex-2 " >
                                         <span>{item.titulo}</span>
                                     </div>
                                 )

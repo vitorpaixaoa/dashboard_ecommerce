@@ -47,7 +47,7 @@ class ListaDinamicaSimples extends React.Component {
                     </div>
                     <div className="flex flex-center">
                         <ButtonSimples 
-                            type="success" 
+                            type="success " 
                             onClick={() => this.onAdd(texto)} 
                             label=" + " />
                     </div>

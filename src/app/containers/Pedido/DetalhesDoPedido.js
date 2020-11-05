@@ -8,11 +8,11 @@ class DetalhesDoPedido extends Component{
 
     renderCabecalho(){
         return(
-                <div>
-                    <div>
+                <div className="flex">
+                    <div className=" flex-4">
                         <Titulo tipo="h2" titulo="Pedido - Cliente 1 - 17/08/2020" />
                     </div>
-                    <div>
+                    <div className="flex-1 flex-end">
                         <ButtonSimples
                             type="danger" 
                             label="CANCELAR PEDIDO" 
@@ -25,7 +25,7 @@ class DetalhesDoPedido extends Component{
 
     renderDadosDoCliente(){
         return(
-            <div>
+            <div className="flex-2">
                 <Titulo tipo="h4" titulo="Dados do Cliente"/>
                 <br/>
                 <TextoDados chave="Nome" valor="Cliente 1"/>
@@ -38,7 +38,7 @@ class DetalhesDoPedido extends Component{
 
     renderDadosDeEntrega(){
         return(
-            <div>
+            <div className="flex-2">
                 <Titulo tipo="h4" titulo="Dados de Entrega"/>
                 <br/>
                 <TextoDados chave="Endereco" valor="Rua Teste 123"/>
@@ -52,7 +52,7 @@ class DetalhesDoPedido extends Component{
 
     renderDadosDePagamento(){
         return(
-            <div>
+            <div className="flex-3">
                 <Titulo tipo="h4" titulo="Dados de Pagamento"/>
                 <br/>
                 <TextoDados chave="Taxa de Entrega" valor="R$ 25,80 (PAC)"/>
@@ -81,7 +81,7 @@ class DetalhesDoPedido extends Component{
         ]
 
         return(
-            <div>
+            <div className="flex-3">
                 <Titulo tipo="h4" titulo="Carrinho"/>
                 <br/>
                 <TabelaSimples cabecalho={["Produto", "Preço Und.", "Quantidade", "Preco Total"]}  
@@ -97,10 +97,17 @@ class DetalhesDoPedido extends Component{
         return (
             <div className="Detalhes-do-Pedido" >
                 {this.renderCabecalho()}
-                {this.renderDadosDoCliente()}
-                {this.renderDadosDoCarrinho()}
-                {this.renderDadosDeEntrega()}
-                {this.renderDadosDePagamento()}
+                <div flex="flex vertical">
+                    <div className="flex horizontal">
+                        {this.renderDadosDoCliente()}
+                        {this.renderDadosDoCarrinho()}
+                    </div>
+                    <div className="flex horizontal">
+                        {this.renderDadosDeEntrega()}
+                        {this.renderDadosDePagamento()}
+
+                    </div>
+                </div>
             </div>
         )
     }

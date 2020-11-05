@@ -8,7 +8,7 @@ class Menu extends Component {
     render(){
         const {open} = this.state;
         return(
-            <div className={`Menu ${ open ? "menu-open": ""}`}>
+            <div className={`Menu full-height ${ open ? "menu-open": ""}`}>
                 <div className={`item-top flex ${ open? "flex-end":"flex-center"} `}onClick={() => this.toggleOpen()}>
                     { (<i className={`fas fa-arrow-${ open? "left":"right"}`}/>) }
                 </div>

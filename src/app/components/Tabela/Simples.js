@@ -26,7 +26,7 @@ const TabelaSimples = ({ cabecalho, dados}) =>(
                                 linha["botaoDeDetalhes"] && (
                                     <td>
                                         <Link to={linha["botaoDeDetalhes"]}>
-                                            <button>
+                                            <button className="button button-danger button-small">
                                                 DETALHES
                                             </button>
                                         </Link>

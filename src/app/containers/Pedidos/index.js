@@ -47,13 +47,14 @@ class Pedidos extends Component {
         ]
         return (
         <div className="Pedidos">
-                <Titulo tipo="h1" titulo="Pedidos" />
+            <div className="Card">
+            <Titulo tipo="h1" titulo="Pedidos" />
                 <br/>
                 <Pesquisa 
-                valor ={pesquisa} 
-                placeholder={"Pesquise pelo nome do cliente."}
-                onChange={(ev)=> this.onChangePesquisa(ev)}
-                onClick={ ()=> alert("Pesuisar")}/>    
+                    valor ={pesquisa} 
+                    placeholder={"Pesquise pelo nome do cliente."}
+                    onChange={(ev)=> this.onChangePesquisa(ev)}
+                    onClick={ ()=> alert("Pesuisar")}/>    
                 <br/>
                 <Tabela 
                     cabecalho={["Cliente","Valor Total", "Data", "Situação"]}
@@ -62,7 +63,7 @@ class Pedidos extends Component {
                 total={120} 
                 limite={20} 
                 onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual) }/>
-
+            </div>         
         </div>)
     }
 }
