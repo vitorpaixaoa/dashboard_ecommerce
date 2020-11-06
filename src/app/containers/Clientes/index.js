@@ -7,7 +7,7 @@ import Tabela from '../../components/Tabela/Simples'
 import Paginacao from '../../components/Paginacao/Simples'
 
 
-class Pedidos extends Component {
+class Clientes extends Component {
 
     state = {
         pesquisa:"",
@@ -25,30 +25,37 @@ class Pedidos extends Component {
         const dados = [
             {
                 "Cliente": "Cliente 1",
-                "Valor Total": 89.90,
-                "Data": moment().toISOString(),
-                "Situação": "Aguardando Pagamento",
-                "botaoDeDetalhes":"pedido/21391daas112221"
+                "E-mail": "cliente1@email.com",
+                "Telefone": "98 12345678",
+                "CPF": "123.456.789-10",
+                "botaoDeDetalhes":"cliente/cliente1@email.com"
             },
             {
                 "Cliente": "Cliente 2",
-                "Valor Total": 89.90,
-                "Data": moment().toISOString(),
-                "Situação": "Aguardando Pagamento",
-                "botaoDeDetalhes":"pedido/2132131dd2112s1"
+                "E-mail": "cliente2@email.com",
+                "Telefone": "98 12345678",
+                "CPF": "123.456.789-10",
+                "botaoDeDetalhes":"cliente/cliente2@email.com"
             },
             {
                 "Cliente": "Cliente 3",
-                "Valor Total": 150,
-                "Data": moment().toISOString(),
-                "Situação": "Aguardando Pagamento",
-                "botaoDeDetalhes":"pedido/21391daas1s12s112221"
+                "E-mail": "cliente3@email.com",
+                "Telefone": "98 12345678",
+                "CPF": "123.456.789-10",
+                "botaoDeDetalhes":"cliente/cliente3@email.com"
+            },
+            {
+                "Cliente": "Cliente 4",
+                "E-mail": "cliente4@email.com",
+                "Telefone": "98 12345678",
+                "CPF": "123.456.789-10",
+                "botaoDeDetalhes":"cliente/cliente4@email.com"
             }
         ]
         return (
-        <div className="Pedidos full-width">
+        <div className="Clientes full-width">
             <div className="Card">
-            <Titulo tipo="h1" titulo="Pedidos" />
+            <Titulo tipo="h1" titulo="Clientes" />
                 <br/>
                 <Pesquisa 
                     valor ={pesquisa} 
@@ -57,7 +64,7 @@ class Pedidos extends Component {
                     onClick={ ()=> alert("Pesuisar")}/>    
                 <br/>
                 <Tabela 
-                    cabecalho={["Cliente","Valor Total", "Data", "Situação"]}
+                    cabecalho={["Cliente","E-mail", "Telefone", "CPF"]}
                     dados={dados} />
                 <Paginacao atual={this.state.atual} 
                 total={120} 
@@ -68,4 +75,4 @@ class Pedidos extends Component {
     }
 }
 
-export default Pedidos
+export default Clientes

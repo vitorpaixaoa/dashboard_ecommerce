@@ -46,7 +46,7 @@ class InputValor extends Component {
         const {value} = this.props
         return (
             <div className="Input-Valor flex" onClick={() => this.toggleForm()}>
-                <span className="input">{value}</span>
+                <span className={this.props.noStyle ? "input-nostyle" : "input"}>{value}</span>
                <div className="flex flex-center"> 
                 <ButtonSimples 
                         type="warning "

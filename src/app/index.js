@@ -14,7 +14,8 @@ import Pedido from './containers/Pedido/';
 import Login from './containers/Login';
 import RecuperarSenha from './containers/RecuperarSenha/index';
 import ResetarSenha from './containers/RecuperarSenha/ResetarSenha';
-
+import Clientes from './containers/Clientes'
+import Cliente from './containers/Cliente'
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
       <Router>
           <div className="App">
             <Route path={"/"} exact component = {base(Pedidos)}/>
-            <Route path={"/pedido"} exact component = {base(Pedido)}/>
+            <Route path={"/pedido/:id"} exact component = {base(Pedido)}/>
+            
+            <Route path={"/clientes"}  component = {base(Clientes)}/>
+            <Route path={"/cliente/:email"}  component = {base(Cliente)}/>
 
             <Route path={"/login"}  component = {Login}/>
             <Route path={"/recuperar-senha"}  component = {RecuperarSenha}/>

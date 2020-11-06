@@ -248,6 +248,13 @@ border: 1px solid var(--cor-cinza-escuro);
     margin: 10px 0;
 
 }
+
+.Input-Valor .input-nostyle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Input-Valor input, .Input-Valor .input {
   border: 1px solid var(--cor-cinza-escuro);
   padding: 15px 30px;
