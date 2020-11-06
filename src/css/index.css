@@ -21,6 +21,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--cor-branca-arosada);
+
+
 }
 
 
@@ -74,6 +76,7 @@ body {
 
 .Menu {
   background-color: var(--cor-tema) ;
+
   width: 50px;
   margin-right: 20px;
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.837);
@@ -177,6 +180,7 @@ table.simples th:last-child{
 }
 .button-danger{
   background-color: var(--cor-terciaria);
+  color: var(--cor-branca);
 }
 .button-warning{
   background-color: var(--cor-amarelo);

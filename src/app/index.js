@@ -8,14 +8,19 @@ import base from './containers/HOC/Base';
 //CONTAINER COM BASE
 import Pedidos from './containers/Pedidos/';
 import Pedido from './containers/Pedido/';
+import Clientes from './containers/Clientes'
+import Cliente from './containers/Cliente'
+
+import Categorias from './containers/Categorias'
+import Categoria from './containers/Categoria'
 
 
 //CONTAINER SEM BASE
 import Login from './containers/Login';
 import RecuperarSenha from './containers/RecuperarSenha/index';
 import ResetarSenha from './containers/RecuperarSenha/ResetarSenha';
-import Clientes from './containers/Clientes'
-import Cliente from './containers/Cliente'
+
+
 
 function App() {
   return (
@@ -27,6 +32,9 @@ function App() {
             
             <Route path={"/clientes"}  component = {base(Clientes)}/>
             <Route path={"/cliente/:email"}  component = {base(Cliente)}/>
+           
+            <Route path={"/categorias"}  component = {base(Categorias)}/>
+            <Route path={"/categoria/:id"}  component = {base(Categoria)}/>
 
             <Route path={"/login"}  component = {Login}/>
             <Route path={"/recuperar-senha"}  component = {RecuperarSenha}/>
