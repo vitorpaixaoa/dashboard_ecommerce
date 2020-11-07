@@ -12,6 +12,7 @@ class Categoria extends Component {
                             <DetalhesCategoria />
                         </div>
                         <div>
+                            <ListaDeProdutos />
                         </div>
                     </div>
             </div>
