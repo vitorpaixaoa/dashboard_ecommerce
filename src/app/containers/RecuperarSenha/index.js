@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 
-import Titulo from '../../components/Texto/Titulo'
-
 import Input from '../../components/Inputs/Simples'
 
 import Button from '../../components/Button/Simples'
@@ -22,7 +20,7 @@ class RecuperarSenha extends Component{
             <div className="Resetar-Senha flex flex-center">
                 <div className="Card">
                 <div className="flex flex-center" >
-                <img src={logo}></img>
+                <img src={logo} alt="Logo" width=""></img>
                 </div>
                     <br/>
                             <div>

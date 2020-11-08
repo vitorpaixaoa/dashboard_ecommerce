@@ -1,6 +1,5 @@
 import React,{ Component } from 'react';
 import moment from 'moment';
-import {Link} from 'react-router-dom'
 
 import Titulo from '../../components/Texto/Titulo';
 import Tabela from '../../components/Tabela/Simples'

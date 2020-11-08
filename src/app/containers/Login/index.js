@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-import Titulo from '../../components/Texto/Titulo'
-
 import Input from '../../components/Inputs/Simples'
 
 import Checkbox from '../../components/Inputs/Checkbox'
@@ -10,8 +8,6 @@ import Checkbox from '../../components/Inputs/Checkbox'
 import Button from '../../components/Button/Simples'
 
 import logo from '../../../img/logo.png'
-
-import Footer from '../../components/Footer/Footer'
 
 class Login extends Component{
     
@@ -30,7 +26,7 @@ class Login extends Component{
             <div className="Login flex flex-center">
                 <div className="Card">
                         <div className="flex vertical flex-center">
-                            <img src={logo}/>
+                            <img src={logo} alt="Logo" width=""/>
                             <p> Faça seu login abaixo</p>
                         </div>
                         <br/><br/>

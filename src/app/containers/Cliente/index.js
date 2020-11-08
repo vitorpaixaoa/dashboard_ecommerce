@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DetalhesDoPedido from '../Pedido/DetalhesDoPedido'
 
 import DetalhesDoCliente from './detalhesDoCliente'
 import DetalhesDosPedidos from './detalhesDosPedidos'
