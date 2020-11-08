@@ -14,12 +14,14 @@ import Cliente from './containers/Cliente'
 import Categorias from './containers/Categorias'
 import Categoria from './containers/Categoria'
 
+import Produtos from './containers/Produtos';
+import Produto from './containers/Produto';
 
 //CONTAINER SEM BASE
 import Login from './containers/Login';
 import RecuperarSenha from './containers/RecuperarSenha/index';
 import ResetarSenha from './containers/RecuperarSenha/ResetarSenha';
-import Produtos from './containers/Produtos';
+
 
 
 
@@ -39,6 +41,7 @@ function App() {
             
             
             <Route path={"/produtos"}  component = {base(Produtos)}/>
+            <Route path={"/produto/:id"}  component = {base(Produto)}/>
 
 
 

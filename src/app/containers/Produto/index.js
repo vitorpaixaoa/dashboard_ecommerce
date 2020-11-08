@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+
+import DetalhesProduto from './detalhesProduto'
+import DetalhesVariacao from './detalhesVariacoes'
+
+class Produto extends Component {
+    render(){
+        return(
+            <div className="Produto full-width flex vertical">
+                <div className="Card">
+                    <DetalhesProduto />
+                </div>
+                <dvi className="Card">
+                    <DetalhesVariacao />
+                </dvi>
+
+            </div>
+        )
+    }
+}
+
+export default Produto
