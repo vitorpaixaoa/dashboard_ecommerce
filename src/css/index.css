@@ -290,3 +290,18 @@ border: 1px solid var(--cor-cinza-escuro);
   text-decoration: none;
   color: #595959;
 }
+
+.imagens-container {
+  flex-wrap: wrap;
+  display: flex;
+}
+.imagem-container{
+  max-width: 100px;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border-radius: 5px;
+  background-size: cover;
+  flex: 1;
+  flex-basis: 100px;
+}

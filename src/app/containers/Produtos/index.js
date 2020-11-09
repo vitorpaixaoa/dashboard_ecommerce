@@ -26,31 +26,31 @@ class Produtos extends Component {
                 "Produto": "Mouse 1",
                 "Categoria": "Acessórios",
                 "Disponível": "sim",
-                "botaoDeDetalhes": "/produtos/DASQDWQD1212"
+                "botaoDeDetalhes": "/produto/DASQDWQD1212"
             },
             {
                 "Produto": "Mouse 2",
                 "Categoria": "Acessórios",
                 "Disponível": "sim",
-                "botaoDeDetalhes": "/produtos/SDASDSACCCC"
+                "botaoDeDetalhes": "/produto/SDASDSACCCC"
             },
             {
                 "Produto": "Mouse 3",
                 "Categoria": "Acessórios",
                 "Disponível": "sim",
-                "botaoDeDetalhes": "/produtos/ASDASFFFSAAS"
+                "botaoDeDetalhes": "/produto/ASDASFFFSAAS"
             },
             {
                 "Produto": "Mouse 4",
                 "Categoria": "Acessórios",
                 "Disponível": "sim",
-                "botaoDeDetalhes": "/produtos/ASDSADCZXXAAA"
+                "botaoDeDetalhes": "/produto/ASDSADCZXXAAA"
             },
             {
                 "Produto": "Mouse 5",
                 "Categoria": "Acessórios",
                 "Disponível": "sim",
-                "botaoDeDetalhes": "/produtos/SADSAXXXSAAS"
+                "botaoDeDetalhes": "/produto/SADSAXXXSAAS"
             },
         ]
         return (

@@ -3,6 +3,7 @@ import Titulo from '../../components/Texto/Titulo'
 import ButtonSimples from '../../components/Button/Simples'
 import InputValor from '../../components/Inputs/InputValor';
 import { TextoDados } from '../../components/Texto/Dados';
+import InputSelect from '../../components/Inputs/Select'
 
 class DetalhesCategoria extends Component {
 
@@ -58,10 +59,16 @@ class DetalhesCategoria extends Component {
          <TextoDados 
          chave="Disponibilidade"
          valor={(
-             <select value={disponibilidade} onChange={(ev) => this.setState({ disponibilidade: ev.target.value})}>
-                 <option value={"disponivel"}>Disponível</option>
-                 <option value={"indisponivel"}>Indisponível</option>
-             </select>
+             <InputSelect 
+                name="disponibilidade"
+                onChange={(ev) => this.setState({ disponibilidade: ev.target.value})}
+                value={disponibilidade}
+                opcoes={[
+                    {label: "Disponivel", value: "disponivel"},
+                    {label: "Indisponivel", value: "indisponivel"}
+                ]}
+             />
+            
          )} />
 
 
