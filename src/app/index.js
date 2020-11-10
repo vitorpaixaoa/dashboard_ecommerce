@@ -14,8 +14,11 @@ import Cliente from './containers/Cliente'
 import Categorias from './containers/Categorias'
 import Categoria from './containers/Categoria'
 
+import Avaliacoes from './containers/Avaliacoes'
+
 import Produtos from './containers/Produtos';
 import Produto from './containers/Produto';
+import Avaliacao from './containers/Avaliacao';
 
 //CONTAINER SEM BASE
 import Login from './containers/Login';
@@ -42,6 +45,9 @@ function App() {
             
             <Route path={"/produtos"}  component = {base(Produtos)}/>
             <Route path={"/produto/:id"}  component = {base(Produto)}/>
+            
+            <Route path={"/avaliacoes/:id"}  component = {base(Avaliacoes)}/>
+            <Route path={"/avaliacao/:id"}  component = {base(Avaliacao)}/>
 
 
 
