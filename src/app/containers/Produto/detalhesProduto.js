@@ -20,7 +20,7 @@ class DetalhesProdutos extends Component{
             "https://dummyimage.com/100x100/bd772c/0011ff.jpg&text=Produto+Teste",
             "https://dummyimage.com/100x100/bd772c/0011ff.jpg&text=Produto+Teste",
             "https://dummyimage.com/100x100/bd772c/0011ff.jpg&text=Produto+Teste",
-            "https://dummyimage.com/100x100/bd772c/0011ff.jpg&text=Produto+Teste",
+            "https://dummyimage.com/100x100/bd772c/0011ff.jpg&text=Produto+Teste"
         ]
     }
 
@@ -44,6 +44,10 @@ class DetalhesProdutos extends Component{
         )
     }
 
+    handleSubmit =(field, value) => {
+        this.setState({ [field]: value})
+    }
+
     renderDados(){
         const { nome, disponibilidade, descricao } = this.state
         return (
@@ -52,8 +56,8 @@ class DetalhesProdutos extends Component{
                     chave="Nome"
                     valor={(
                         <InputValor 
-                            value={nome} noStyle name="nome"
-                            onChange ={(ev) => this.setState({nome: ev.target.value }) }
+                        handleSubmit= {(valor) => this.handleSubmit("nome", valor)}
+                        value={nome} noStyle
                         />
                     )}
                 />
@@ -105,7 +109,6 @@ class DetalhesProdutos extends Component{
         )
     }
     render(){
-        const {nome, disponibilidade, descricao} = this.state;
         return(
             <div className="Detalhes-do-Produto">
                 {this.renderCabecalho()}
