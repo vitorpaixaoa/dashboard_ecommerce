@@ -165,7 +165,7 @@ table.simples th:last-child{
 
 .button {
   font-size: 1rem;
-  padding: 10px 15px;
+  padding: 6px 10px;
   margin: 5px;
   border: 1px solid #aaaa;
   cursor: pointer;
@@ -230,13 +230,16 @@ border: 1px solid var(--cor-cinza-escuro);
   font-weight: bold;
 }
 
-.Input-Simples input{
+.Input-Simples input, textarea{
   padding: 8px 12px;
   margin: 5px 0;
   border: 1px solid var(--cor-cinza-escuro);
   border-radius: 15px;
   font-size: 0.95rem;
   
+}
+textarea {
+  width: 90%;
 }
 .Input-Simples label{
   margin: 5px 0px 2px 0;
@@ -305,3 +308,4 @@ border: 1px solid var(--cor-cinza-escuro);
   flex: 1;
   flex-basis: 100px;
 }
+

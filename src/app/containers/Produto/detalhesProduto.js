@@ -74,10 +74,11 @@ class DetalhesProdutos extends Component{
                 ]}
              />
                     )}
-                />
+                /><br/>
                 <br/>
                  <TextoDados
                     chave="Descricao"
+                    vertical
                     valor={(
                         <textarea 
                             name={"descricao"} 
