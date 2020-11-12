@@ -7,7 +7,7 @@ const BarraTopo = ()=> (
                 <a href="/">Ver loja</a>
         </div>
         <div className="flex-1 flex flex-end"> 
-            <Link to="logout"> Sair </Link> 
+            <Link to="/login"> Sair </Link> <br/>
         </div>
     </div>
 )
