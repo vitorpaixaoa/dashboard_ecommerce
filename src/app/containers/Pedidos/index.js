@@ -24,7 +24,7 @@ class Pedidos extends Component {
         //dados
         const dados = [
             {
-                "Cliente": "Cliente 1",
+                "Cliente": "Alan Vitor",
                 "Valor Total": 89.90,
                 "Data": moment().toISOString(),
                 "Situação": "Aguardando Pagamento",
