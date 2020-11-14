@@ -309,3 +309,14 @@ textarea {
   flex-basis: 100px;
 }
 
+.imagem-remover{
+  background-color: var(--cor-terciaria);
+  width: 20px;
+  margin: 20px;
+  font-size: 1rem;
+  color: var(--cor-branca);
+  border-radius: 100px;
+}
+.imagem-remover:hover{
+  background-color: rgb(247, 116, 116);
+}
