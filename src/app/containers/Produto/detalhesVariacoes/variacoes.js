@@ -16,7 +16,9 @@ class Variacoes extends Component {
                 <Titulo tipo="h2" titulo="Variações" />
                 {
                     variacoes.map((item, idx) => (
-                       <div className={`variacao-item ${variacaoSelecionada ? "variacao-selecionada" : ""}`} key={idx}>
+                       <div 
+                            onClick={()=> this.setState({ variacaoSelecionada: item.id})}
+                            className={` flex flex-center variacao-item ${variacaoSelecionada === item.id ? "variacao-ativa" : ""}`} key={idx}>
                            <span>{item.nome}</span>
                        </div>
                     ))

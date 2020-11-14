@@ -316,7 +316,23 @@ textarea {
   font-size: 1rem;
   color: var(--cor-branca);
   border-radius: 100px;
+  cursor: pointer;
 }
 .imagem-remover:hover{
   background-color: rgb(247, 116, 116);
+}
+
+.variacao-item{
+  background-color: var(--cor-branca-arosada);
+  color: var(--cor-cinza-escuro);
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 5px 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.variacao-ativa, .variacao-item:hover{
+  background-color: var(--cor-tema-escuro);
+  color: var(--cor-branca-arosada);
 }

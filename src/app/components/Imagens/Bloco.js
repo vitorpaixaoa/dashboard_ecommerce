@@ -10,10 +10,12 @@ class BlocoImagem extends React.Component {
             <div>
                 <Titulo tipo="h3" titulo="Imagens" />
             </div>
-                <div className="flex horizontal">
+                <div className="flex vertical">
                     <label><strong> Insira aqui uma nova imagem:&nbsp;</strong></label>
+                    
                     <input type="file" onChange={handleSubmit}/>
                 </div>
+                <hr/>
                 <div className="imagens-container">
                     {
                         imagens.map((src, idx) => (
