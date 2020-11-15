@@ -6,7 +6,7 @@ class BlocoImagem extends React.Component {
         const { handleSubmit, imagens, onRemove} = this.props
         return(
             <div className="Bloco-Imagem">
-            <Titulo tipo="h3" tipo="Imagens" />
+            <Titulo tipo="h3" titulo="Imagens" />
             <div>
                 <Titulo tipo="h3" titulo="Imagens" />
             </div>

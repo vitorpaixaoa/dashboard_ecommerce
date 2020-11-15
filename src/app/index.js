@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 
 import { HashRouter as Router, Route } from 'react-router-dom';
+
+import { initApp } from './Actions'
 
 import base from './containers/HOC/Base';
 //CONTAINER COM BASE
@@ -32,8 +34,13 @@ import RecuperarSenha from './containers/RecuperarSenha/index';
 import ResetarSenha from './containers/RecuperarSenha/ResetarSenha';
 
 
+class App extends Component {  
 
-function App() {
+  componentDidMount() {
+    initApp();
+  }
+
+  render() { 
   return (
     <Provider store={store}>
       <Router>
@@ -68,6 +75,7 @@ function App() {
       </Router>
     </Provider>
   );
+}
 }
 
 export default App;

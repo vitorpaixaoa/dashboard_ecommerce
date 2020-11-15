@@ -9,16 +9,30 @@ import Button from '../../components/Button/Simples'
 
 import logo from '../../../img/logo.png'
 
+import { connect } from 'react-redux'
+
+import * as actions from '../../Actions'
+import { api, versao } from '../../config'
+
 class Login extends Component{
     
     state={
         email:"",
         senha:"",
-        opcaoLembrar: false
+        opcaoLembrar: true
     }
 
     onChangeInput = (field, ev)=> this.setState({ [field]: ev.target.value });
     onChangeCheckbox = (field) => this.setState({ [field]: !this.state[field] })
+
+
+    handleLogin(){
+        const { email, senha: password, opcaoLembrar } = this.state
+        this.props.handleLogin({email, password, opcaoLembrar }, () => {
+            alert("Aviso")
+        })
+    }
+
 
     render(){
         const { email, senha, opcaoLembrar} = this.state
@@ -48,14 +62,17 @@ class Login extends Component{
                                 label="Lembrar?"/>
                             </div>
                             <div className="flex-1 flex flex-end">
-                               <Link to="/recuperar-senha"><small>Esqueceu sua senha?</small></Link> 
+                               {/* <Link to="/recuperar-senha"><small>Esqueceu sua senha?</small></Link>  */}
+                               <a href={`${api}/${versao}/api/usuarios/recuperar-senha`}>
+                                   <small>Esqueceu sua senha?</small>
+                               </a>
                             </div>
                         </div>
 
                          <br/> <br/>
 
                          <div className="flex flex-center">
-                                <Button type="success" rota="/" label="ENTRAR"/>    
+                                <Button type="success"  label="ENTRAR" onClick={()=> this.handleLogin()}/>    
                          </div>
                            
                 </div>
@@ -64,4 +81,4 @@ class Login extends Component{
         )
     }
 }
-export default Login
+export default connect(null, actions ) (Login)
