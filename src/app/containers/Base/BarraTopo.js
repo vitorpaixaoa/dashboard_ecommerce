@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const BarraTopo = ()=> (
+const BarraTopo = ({handleLogout})=> (
     <div className="Barra-topo flex horizontal  full-width">
         <div className="flex-1 flex flex-start">
-                <a href="/">Ver loja</a>
+                <a href="/" >Ver loja</a>
         </div>
         <div className="flex-1 flex flex-end"> 
-            <Link to="/login"> Sair </Link> <br/>
+            <a href="/" onClick={() => handleLogout()} > Sair </a>
         </div>
     </div>
 )

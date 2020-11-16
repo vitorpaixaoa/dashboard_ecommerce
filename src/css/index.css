@@ -246,6 +246,14 @@ textarea {
   font-weight: bold;
 }
 
+.input-error{
+  border: 1px solid var(--cor-terciaria);
+  box-shadow: 0 0 5px red;
+}
+.small-danger{
+  color: red;
+  font-size: 12px;
+}
 .border-green{
   border-left: 4px solid var(--cor-secundaria);
   padding-left: 5px;
@@ -335,4 +343,22 @@ textarea {
 .variacao-ativa, .variacao-item:hover{
   background-color: var(--cor-tema-escuro);
   color: var(--cor-branca-arosada);
+}
+
+.alert {
+  text-align: center;
+  width:  calc(100% - 35px);
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius:  20px;
+  border: 2px solid var(--cor-cinza-medio);
+  background-color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-escuro);
+  font-size: 0.9rem;
+}
+
+.alert-danger{
+  border: 2px solid var(--cor-terciaria);
+  background-color: rgb(233, 127, 127);
+  color: rgb(130, 22, 22);
 }

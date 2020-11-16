@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 
 import Input from '../../components/Inputs/Simples'
 
@@ -8,6 +7,8 @@ import Checkbox from '../../components/Inputs/Checkbox'
 import Button from '../../components/Button/Simples'
 
 import logo from '../../../img/logo.png'
+
+import Alert from '../../components/Alert/Danger'
 
 import { connect } from 'react-redux'
 
@@ -19,23 +20,39 @@ class Login extends Component{
     state={
         email:"",
         senha:"",
-        opcaoLembrar: true
+        opcaoLembrar: true,
+        erros:{}
     }
 
-    onChangeInput = (field, ev)=> this.setState({ [field]: ev.target.value });
+    onChangeInput = (field, ev)=> {
+        this.setState({ [field]: ev.target.value });
+        this.validate();
+    }
     onChangeCheckbox = (field) => this.setState({ [field]: !this.state[field] })
 
 
     handleLogin(){
         const { email, senha: password, opcaoLembrar } = this.state
-        this.props.handleLogin({email, password, opcaoLembrar }, () => {
-            alert("Aviso")
+        if(! this.validate() ) return;
+        
+        this.props.handleLogin({email, password, opcaoLembrar }, (error) => {
+            this.setState({ erros: {...this.state.erros, form: error} })
         })
+    }
+    validate(){
+        const {email, senha} = this.state;
+        const erros = {};
+        if(!email) erros.email = "Preencha aqui com seu email."
+        if(!senha) erros.senha = "Preencha aqui com sua senha."
+
+        
+        this.setState({ erros })
+        return !( Object.keys(erros).length > 0 );
     }
 
 
     render(){
-        const { email, senha, opcaoLembrar} = this.state
+        const { email, senha, opcaoLembrar, erros} = this.state
         return(
             <div className="Login flex flex-center">
                 <div className="Card">
@@ -44,14 +61,19 @@ class Login extends Component{
                             <p> Faça seu login abaixo</p>
                         </div>
                         <br/><br/>
+
+                        <Alert error={erros.form} />
+
                         <Input 
                             label ="E-mail"
                             value={email}
                             type="email"
+                            error={erros.email}
                             onChange={(ev) => this.onChangeInput("email", ev )} />                    
                         <Input 
                             label ="Senha"
                             value={senha}
+                            error={erros.senha}
                             type="password"
                             onChange={(ev) => this.onChangeInput("senha", ev )} />   
                         <div className="flex">
