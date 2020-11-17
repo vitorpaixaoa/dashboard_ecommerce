@@ -42,3 +42,7 @@ export const handleLogout = () => {
     cleanToken();
     return { type: LOGOUT_USER }
 }
+
+export const formatMoney = (valor) => {
+    return `R$ ${valor.toFixed(2).split(".").join(",")}`
+}
