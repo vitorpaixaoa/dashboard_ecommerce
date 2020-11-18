@@ -228,6 +228,7 @@ border: 1px solid var(--cor-cinza-escuro);
   text-decoration: none;
   color: var(--cor-tema-escuro);
   font-weight: bold;
+  cursor: pointer;
 }
 
 .Input-Simples input, textarea{
