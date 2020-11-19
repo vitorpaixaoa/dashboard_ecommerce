@@ -33,14 +33,15 @@ export const getPedido = (id, loja ) => {
     }
 }
 
+
 export const cancelarPedido = (id, loja, cb) => {
     return function(dispatch){
-        axios.delete(`${api}/${versao}/api/pedidos/admin/${id}?loja=${loja}`,getHeaders())
+        axios.delete(`${api}/${versao}/api/pedidos/admin/${id}?loja=${loja}`, getHeaders())
         .then(response => {
             dispatch({ type: CANCELAR_PEDIDO, payload: response.data });
-            cb(null)
+            cb(null);
         })
-        .catch(e=>cb(errorHandling(e)))
+        .catch(e => cb(errorHandling(e)));
     }
 }
 export const limparPedido = () => ({ type: LIMPAR_PEDIDO });

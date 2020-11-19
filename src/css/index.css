@@ -363,3 +363,9 @@ textarea {
   background-color: rgb(233, 127, 127);
   color: rgb(130, 22, 22);
 }
+
+.alert-success{
+  border: 2px solid var(--cor-secundaria);
+  background-color: #bff3ba;
+  color: #275323;
+}
