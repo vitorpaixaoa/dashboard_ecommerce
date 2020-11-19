@@ -20,7 +20,6 @@ class DetalhesDoPedido extends Component{
     cancelarPedido = () => {
         const { usuario, pedido } = this.props;
         if(!usuario || !pedido) return null;
-        console.log(usuario)
         if(window.confirm("Você realmente deseja cancelar esse pedido?")){
             this.props.cancelarPedido(pedido.pedido._id, usuario.loja, (error) => {
                 this.setState({ 
@@ -32,7 +31,6 @@ class DetalhesDoPedido extends Component{
             });
         }
     }
-
     renderCabecalho(){
         if(!this.props.pedido) return null;
         const { pedido } = this.props.pedido;
@@ -98,9 +96,9 @@ class DetalhesDoPedido extends Component{
             <div className="flex-3">
                 <Titulo tipo="h4" titulo="Dados de Pagamento"/>
                 <br/>
-                <TextoDados chave="Taxa de Entrega" valor={`${formatMoney(entrega.custo)} (${entrega.tipo})`}/>
-                <TextoDados chave="Valor do Pedido" valor={`${formatMoney(pagamento.valor - entrega.custo )}`}/>
-                <TextoDados chave="Valor Total" valor={`${formatMoney(pagamento.valor)}`}/>
+                <TextoDados chave="Taxa de Entrega" valor={`${formatMoney(entrega.custo)} (${entrega.tipo})`}/>
+                <TextoDados chave="Valor do Pedido" valor={`${formatMoney(pagamento.valor - entrega.custo )}`}/>
+                <TextoDados chave="Valor Total" valor={`${formatMoney(pagamento.valor)}`}/>
                 <TextoDados chave="Forma de Pagamento" valor={pagamento.forma}/>
             </div>
         )
@@ -133,20 +131,18 @@ class DetalhesDoPedido extends Component{
    
 
     render(){
-        
         return (
-            <div className="Detalhes-do-Pedido" >
-                <AlertGeral aviso ={this.state.aviso} />
-                {this.renderCabecalho()}
-                <div flex="flex vertical">
+            <div className="Detalhes-do-Pedido">
+                { this.renderCabecalho() }
+                <AlertGeral aviso={this.state.aviso} />
+                <div className="flex vertical">
                     <div className="flex horizontal">
-                        {this.renderDadosDoCliente()}
-                        {this.renderDadosDoCarrinho()}
+                        { this.renderDadosDoCliente() }
+                        { this.renderDadosDoCarrinho() }
                     </div>
                     <div className="flex horizontal">
-                        {this.renderDadosDeEntrega()}
-                        {this.renderDadosDePagamento()}
-
+                        { this.renderDadosDeEntrega() }
+                        { this.renderDadosDePagamento() }
                     </div>
                 </div>
             </div>
@@ -154,8 +150,9 @@ class DetalhesDoPedido extends Component{
     }
 }
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
     pedido: state.pedido.pedido,
     usuario: state.auth.usuario
 })
+
 export default connect(mapStateToProps, actions)(DetalhesDoPedido);
