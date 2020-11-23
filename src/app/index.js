@@ -50,7 +50,7 @@ class App extends Component {
             <Route path={"/pedido/:id"} exact component = {base(Pedido)}/>
             
             <Route path={"/clientes"}  component = {base(Clientes)}/>
-            <Route path={"/cliente/:email"}  component = {base(Cliente)}/>
+            <Route path={"/cliente/:id"}  component = {base(Cliente)}/>
            
             <Route path={"/categorias"}  component = {base(Categorias)}/>
             <Route path={"/categoria/:id"}  component = {base(Categoria)}/>

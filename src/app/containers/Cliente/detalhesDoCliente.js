@@ -3,23 +3,48 @@ import Titulo from '../../components/Texto/Titulo';
 import ButtonSimples from '../../components/Button/Simples'
 import { TextoDados } from '../../components/Texto/Dados';
 import InputValor from '../../components/Inputs/InputValor';
+import moment from 'moment'
+
+import { connect } from 'react-redux'
+import * as actions from '../../Actions/clientes'
+import AlertGeral from '../../components/Alert/Geral'
+import Voltar from '../../components/Links/Voltar';
 
 class DetalhesDoCliente extends React.Component{
 
 
-    state={
-        nome: "Cliente 1",
-        CPF: "111.222.333-45",
-        telefone: "12 123456789",
-        dataDeNascimento:"10/01/1995",
-        email:"cliente1@email.com",
+    generateStateCliente = (props) => ({
+        nome: props.cliente ? props.cliente.nome : "",
+        CPF: props.cliente ? props.cliente.cpf : "",
+        telefone: props.cliente ? props.cliente.telefones[0] : "",
+        dataDeNascimento: props.cliente ? moment(props.cliente.dataDeNascimento).format("DD/MM/YYYY") : "",
+        email: props.cliente && props.cliente.usuario ? props.cliente.usuario.email : "",
 
-        endereco: "Rua teste 123",
-        bairro: "Centro",
-        cidade: "Sao Luis",
-        estado: "MA",
-        cep: "65052735"
+        endereco: props.cliente && props.cliente.endereco ? props.cliente.endereco.local : "" ,
+        numero: props.cliente && props.cliente.endereco ? props.cliente.endereco.numero : "" ,
+        bairro: props.cliente && props.cliente.endereco ? props.cliente.endereco.bairro : "" ,
+        cidade: props.cliente && props.cliente.endereco ? props.cliente.endereco.cidade : "" ,
+        estado: props.cliente && props.cliente.endereco ? props.cliente.endereco.estado : "" ,
+        cep: props.cliente && props.cliente.endereco ? props.cliente.endereco.CEP : "" 
+    });
+
+
+    constructor( props ){
+        super();
+        this.state  = {
+            ...this.generateStateCliente(props),
+            aviso: null,
+            errors: {}
+        }
     }
+    
+    componentDidUpdate(prevProps){
+        if(
+            ( !prevProps.cliente && this.props.cliente ) || 
+            ( prevProps.cleinte && this.props.cliente && prevProps.cliente.updatedAt !== this.props.cliente.updatedAt )
+        ) this.setState(this.generateStateCliente(this.props))
+    }
+
 
     handleSubmit =(field, value) => {
         this.setState({ [field]: value})
@@ -102,7 +127,7 @@ class DetalhesDoCliente extends React.Component{
     }
 
     renderDetalhesEntrega(){
-        const { endereco, bairro, cidade, estado, cep} = this.state;
+        const { endereco, bairro, numero, cidade, estado, cep} = this.state;
         return(
         <div className="Detalhes-do-Entrega">
             <TextoDados 
@@ -112,6 +137,14 @@ class DetalhesDoCliente extends React.Component{
                     name="endereco" noStyle
                     handleSubmit= {(valor) => this.handleSubmit("endereco", valor)}
                     value={endereco} />
+            )}/>
+            <TextoDados 
+            chave="Número"
+            valor={(
+                <InputValor 
+                    name="numero" noStyle
+                    handleSubmit= {(valor) => this.handleSubmit("numero", valor)}
+                    value={numero} />
             )}/>
             <TextoDados 
             chave="Bairro"
@@ -155,7 +188,9 @@ class DetalhesDoCliente extends React.Component{
     render(){
         return (
             <div className="DetalhesDoCliente">
+                <Voltar history={this.props.history} />
                 {this.renderCabecalho()}
+                <AlertGeral aviso={this.state.aviso}  />
                 <div className="flex horizontal">
                     <div className="flex-2 flex vertical">
                         { this.renderDetalhesCadastro()}
@@ -169,4 +204,10 @@ class DetalhesDoCliente extends React.Component{
     }
 }
 
-export default DetalhesDoCliente
+
+const mapStateToProps = state => ({
+    cliente: state.cliente.cliente,
+    usuario: state.auth.usuario 
+})
+
+export default connect(mapStateToProps, actions)(DetalhesDoCliente)

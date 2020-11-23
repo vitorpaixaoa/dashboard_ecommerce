@@ -5,4 +5,10 @@
               GET_PEDIDOS = "GET_PEDIDOS",
               CANCELAR_PEDIDO = "CANCELAR_PEDIDO",
               LIMPAR_PEDIDO = "LIMPAR_PEDIDO",
-              GET_PEDIDO= "GET_PEDIDO"
+              GET_PEDIDO= "GET_PEDIDO",
+
+              GET_CLIENTES = "GET_CLIENTES",
+              GET_CLIENTE = "GET_CLIENTE",
+              LIMPAR_CLIENTE ="LIMPAR_CLIENTE",
+              GET_CLIENTE_PEDIDOS = "GET_CLIENTE_PEDIDOS",
+              REMOVE_CLIENTE="REMOVE_CLIENTE"

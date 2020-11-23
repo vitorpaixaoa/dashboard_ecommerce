@@ -7,6 +7,7 @@ import { api, versao } from '../config'
 
 import { saveToken, getHeaders, cleanToken  } from "./localStorage"
 import errorHandling from './errorHandling.js'
+import moment from 'moment'
 
 
 export const initApp = () => {
@@ -45,4 +46,13 @@ export const handleLogout = () => {
 
 export const formatMoney = (valor) => {
     return `R$ ${valor.toFixed(2).split(".").join(",")}`
+}
+
+export const transformeDate = (data, divisor, formato ) => {
+    const _data = data.split(divisor);
+    const dia = Number( _data[0] ) ;
+    const mes = Number( _data[1] ) ;
+    const ano = Number( _data[2]);
+
+    return moment(new Date(ano, mes, dia )).format(formato);
 }
