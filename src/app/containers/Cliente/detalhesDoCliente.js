@@ -25,9 +25,10 @@ class DetalhesDoCliente extends React.Component{
         bairro: props.cliente && props.cliente.endereco ? props.cliente.endereco.bairro : "" ,
         cidade: props.cliente && props.cliente.endereco ? props.cliente.endereco.cidade : "" ,
         estado: props.cliente && props.cliente.endereco ? props.cliente.endereco.estado : "" ,
-        cep: props.cliente && props.cliente.endereco ? props.cliente.endereco.CEP : "" 
+        cep: props.cliente && props.cliente.endereco ? props.cliente.endereco.CEP : ""
+        
     });
-
+    
 
     constructor( props ){
         super();
@@ -38,6 +39,9 @@ class DetalhesDoCliente extends React.Component{
         }
     }
     
+    cleanAlert = () => this.setState({aviso: null});
+
+
     componentDidUpdate(prevProps){
         if(
             ( !prevProps.cliente && this.props.cliente ) || 
@@ -50,29 +54,75 @@ class DetalhesDoCliente extends React.Component{
         this.setState({ [field]: value})
     }
 
+    salvarCliente() {
+        this.cleanAlert()
+        const { usuario, cliente } = this.props;
+        
+        console.log(usuario)
+        if(!usuario || !cliente) return null;
+        this.props.updateCliente(this.state, cliente._id, usuario.loja, (error) => {
+            this.setState({
+                aviso: {
+                    status: !error, 
+                    msg: error ? error.message : "Cliente atualizado com sucesso"
+                }
+            });
+        });
+
+    }
+    removerCliente() {
+        this.cleanAlert();
+        const { usuario, cliente } = this.props;
+        if(!usuario || !cliente) return null;
+        
+        if(window.confirm("Você realmente deseja excluir o cliente?")){
+            this.props.updateCliente( cliente._id, usuario.loja, (error) => {
+                this.setState({
+                    aviso: {
+                        status: !error, 
+                        msg: error ? error.message : "Cliente Removido com sucesso"
+                    }
+                });
+            });
+        }
+
+    }
+
 
     renderCabecalho(){
-        const {nome} = this.state
+        const {nome} = this.state;
+        const { cliente } = this.props
+        console.log(cliente)
         return(
             <div className="flex">
             <div className="flex-1 flex">
                 <Titulo tipo="h1" titulo={nome}/>
             </div>
-            <div className="flex-1 flex flex-end">
-                <ButtonSimples 
-                    onClick={() => alert("Salvo!")}
-                    label="Salvar"
-                    type="success"
-                />
-                <ButtonSimples 
-                    onClick={() => alert("Removido!")}
-                    label="Remover"
-                    type="danger"
-                />
-            </div>
+            {
+                cliente && cliente.deletado ? (
+                    <div className="flex-1 flex flex-end">
+                        <ButtonSimples 
+                            label="Removido"
+                            type="danger"
+                        />
+                        </div>
+                ) :(
+                    <div className="flex-1 flex flex-end">
+                            <ButtonSimples 
+                                onClick={() => this.salvarCliente()}
+                                label="Salvar"
+                                type="success"
+                            />
+                        <ButtonSimples 
+                            onClick={() => this.removerCliente()}
+                            label="Remover"
+                            type="danger"
+                        />
+                        </div>
+                )
+            }
         </div>
-        )
-        
+        ) 
     }
 
     renderDetalhesCadastro(){
