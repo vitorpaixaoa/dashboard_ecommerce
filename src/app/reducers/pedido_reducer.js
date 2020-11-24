@@ -21,16 +21,16 @@ export default ( state = {}, action ) => {
                 pedido: null
             }
             case CANCELAR_PEDIDO:
-                return {
-                    ...state,
+            return {
+                ...state,
+                pedido: {
+                    ...state.pedido,
                     pedido: {
-                        ...state.pedido,
-                        pedido: {
-                            ...state.pedido.pedido,
-                            cancelado: action.payload.cancelado
-                        }
+                        ...state.pedido.pedido,
+                        cancelado: action.payload.cancelado
                     }
                 }
+            }
         default:
             return state;
     }

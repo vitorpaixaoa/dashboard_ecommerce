@@ -35,7 +35,7 @@ class DetalhesDoCliente extends React.Component{
         this.state  = {
             ...this.generateStateCliente(props),
             aviso: null,
-            errors: {}
+            erros: {}
         }
     }
     
@@ -51,12 +51,34 @@ class DetalhesDoCliente extends React.Component{
 
 
     handleSubmit =(field, value) => {
-        this.setState({ [field]: value})
+        this.setState({ [field]: value}, () => this.validate())
+    }
+
+    validate(){
+        const { nome, CPF, telefone, dataDeNascimento, email, endereco, numero, bairro, cidade, estado, cep} = this.state;
+        const erros = {};
+
+        if(!nome) erros.nome = "Preencha aqui com o nome do cliente.";
+        if(!CPF) erros.CPF = "Preencha aqui com o CPF do cliente.";
+        if(!telefone) erros.telefone = "Preencha aqui com o telefone do cliente.";
+        if(!dataDeNascimento) erros.dataDeNascimento = "Preencha aqui com o dataDeNascimento do cliente.";
+        if(!email) erros.email = "Preencha aqui com o email do cliente.";
+        if(!endereco) erros.endereco = "Preencha aqui com o endereco do cliente.";
+        if(!numero) erros.numero = "Preencha aqui com o numero do cliente.";
+        if(!bairro) erros.bairro = "Preencha aqui com o bairro do cliente.";
+        if(!cidade) erros.cidade = "Preencha aqui com o cidade do cliente.";
+        if(!estado) erros.estado = "Preencha aqui com o estado do cliente.";
+        if(!cep) erros.cep = "Preencha aqui com o cep do cliente.";
+
+        this.setState({ erros });
+        return !(Object.keys(erros).length > 0 );
     }
 
     salvarCliente() {
         this.cleanAlert()
         const { usuario, cliente } = this.props;
+        if(!this.validate()) return null;
+
         
         console.log(usuario)
         if(!usuario || !cliente) return null;
@@ -76,7 +98,7 @@ class DetalhesDoCliente extends React.Component{
         if(!usuario || !cliente) return null;
         
         if(window.confirm("Você realmente deseja excluir o cliente?")){
-            this.props.updateCliente( cliente._id, usuario.loja, (error) => {
+            this.props.removerCliente( cliente._id, usuario.loja, (error) => {
                 this.setState({
                     aviso: {
                         status: !error, 
@@ -92,7 +114,6 @@ class DetalhesDoCliente extends React.Component{
     renderCabecalho(){
         const {nome} = this.state;
         const { cliente } = this.props
-        console.log(cliente)
         return(
             <div className="flex">
             <div className="flex-1 flex">
@@ -126,14 +147,14 @@ class DetalhesDoCliente extends React.Component{
     }
 
     renderDetalhesCadastro(){
-        const { nome, CPF, email, telefone, dataDeNascimento} = this.state;
+        const { nome, CPF, email, telefone, dataDeNascimento, erros} = this.state;
         return(
         <div className="Detalhes-do-Cadastro">
             <TextoDados 
             chave="Nome"
             valor={(
                 <InputValor 
-                    name="nome" noStyle
+                    name="nome" noStyle erro={erros.nome}
                     handleSubmit= {(valor) => this.handleSubmit("nome", valor)}
                     value={nome} />
             )}/>
@@ -141,7 +162,7 @@ class DetalhesDoCliente extends React.Component{
             chave="CPF"
             valor={(
                 <InputValor 
-                    name="CPF" noStyle
+                    name="CPF" noStyle erro={erros.CPF}
                     handleSubmit= {(valor) => this.handleSubmit("CPF", valor)}
                     value={CPF} />
             )}/>
@@ -149,7 +170,7 @@ class DetalhesDoCliente extends React.Component{
             chave="Telefone"
             valor={(
                 <InputValor 
-                    name="Telefone" noStyle
+                    name="Telefone" noStyle erro={erros.telefone}
                     handleSubmit= {(valor) => this.handleSubmit("telefone", valor)}
                     value={telefone} />
             )}/>
@@ -157,7 +178,7 @@ class DetalhesDoCliente extends React.Component{
             chave="E-Mails"
             valor={(
                 <InputValor 
-                    name="email" noStyle
+                    name="email" noStyle erro={erros.email}
                     handleSubmit= {(valor) => this.handleSubmit("email", valor)}
                     value={email} />
             )}/>
@@ -165,7 +186,7 @@ class DetalhesDoCliente extends React.Component{
             chave="Data de Nascimento"
             valor={(
                 <InputValor 
-                    name="dataDeNascimento" noStyle
+                    name="dataDeNascimento" noStyle erro={erros.dataDeNascimento}
                     handleSubmit= {(valor) => this.handleSubmit("dataDeNascimento", valor)}
                     value={dataDeNascimento} />
             )}/>
@@ -177,14 +198,14 @@ class DetalhesDoCliente extends React.Component{
     }
 
     renderDetalhesEntrega(){
-        const { endereco, bairro, numero, cidade, estado, cep} = this.state;
+        const { endereco, bairro, numero, cidade, estado, cep, erros} = this.state;
         return(
         <div className="Detalhes-do-Entrega">
             <TextoDados 
             chave="Endereco"
             valor={(
                 <InputValor 
-                    name="endereco" noStyle
+                    name="endereco" noStyle  erro={erros.endereco}
                     handleSubmit= {(valor) => this.handleSubmit("endereco", valor)}
                     value={endereco} />
             )}/>
@@ -192,7 +213,7 @@ class DetalhesDoCliente extends React.Component{
             chave="Número"
             valor={(
                 <InputValor 
-                    name="numero" noStyle
+                    name="numero" noStyle  erro={erros.numero}
                     handleSubmit= {(valor) => this.handleSubmit("numero", valor)}
                     value={numero} />
             )}/>
@@ -200,7 +221,7 @@ class DetalhesDoCliente extends React.Component{
             chave="Bairro"
             valor={(
                 <InputValor 
-                    name="bairro" noStyle
+                    name="bairro" noStyle erro={erros.bairro}
                     handleSubmit= {(valor) => this.handleSubmit("bairro", valor)}
                     value={bairro} />
             )}/>
@@ -208,7 +229,7 @@ class DetalhesDoCliente extends React.Component{
             chave="Cidade"
             valor={(
                 <InputValor 
-                    name="cidade" noStyle
+                    name="cidade" noStyle erro={erros.cidade}
                     handleSubmit= {(valor) => this.handleSubmit("cidade", valor)}
                     value={cidade} />
             )}/>
@@ -216,7 +237,7 @@ class DetalhesDoCliente extends React.Component{
             chave="Estado"
             valor={(
                 <InputValor 
-                    name="estado" noStyle
+                    name="estado" noStyle erro={erros.estado}
                     handleSubmit= {(valor) => this.handleSubmit("estado", valor)}
                     value={estado} />
             )}/>
@@ -224,7 +245,7 @@ class DetalhesDoCliente extends React.Component{
             chave="CEP"
             valor={(
                 <InputValor 
-                    name="cep" noStyle
+                    name="cep" noStyle erro={erros.cep}
                     handleSubmit= {(valor) => this.handleSubmit("cep", valor)}
                     value={cep} />
             )}/>

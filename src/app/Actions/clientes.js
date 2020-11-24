@@ -46,11 +46,11 @@ export const getClientePedidos = ( id, atual, limite,  loja ) =>{
 
 export const limparCliente = () => ({ type: LIMPAR_CLIENTE});
 
-export const updateCliente = (cliente, id, loja, cb) =>{
+export const updateCliente = (cliente, id, loja, cb) => {
     return function(dispatch){
-        axios.put(`${api}/${versao}/api/clientes/admin/${id}?loja=${loja}`,{
+        axios.put(`${api}/${versao}/api/clientes/admin/${id}?loja=${loja}`, {
             nome: cliente.nome,
-            cpf: cliente.cpf,
+            cpf: cliente.CPF,
             email: cliente.email,
             telefones: [cliente.telefone],
             endereco: {
@@ -62,22 +62,23 @@ export const updateCliente = (cliente, id, loja, cb) =>{
                 CEP: cliente.cep
             },
             dataDeNascimento: transformeDate(cliente.dataDeNascimento, "/", "YYYY-MM-DD")
-        },getHeaders())
-        .then(response =>  {
-            dispatch({type: GET_CLIENTE, payload: response.data});
-            cb(null) 
+        }, getHeaders())
+        .then(response => {
+            dispatch({ type: GET_CLIENTE, payload: response.data });
+            cb(null);
         })
-        .catch((e) => cb(errorHandling(e)));
+        .catch((e) => cb(errorHandling(e)))
     }
 }
 
-export const removerCliente = (id, loja, cb ) => {
+
+export const removerCliente = (id, loja, cb) => {
     return function(dispatch){
         axios.delete(`${api}/${versao}/api/clientes/admin/${id}?loja=${loja}`, getHeaders())
-        .then(response =>  {
-            dispatch({type: REMOVE_CLIENTE, payload: response.data});
-            cb(null) 
+        .then(response => {
+            dispatch({ type: REMOVE_CLIENTE, payload: response.data });
+            cb(null);
         })
-        .catch((e) => cb(errorHandling(e)));
+        .catch((e) => cb(errorHandling(e)))
     }
 }
