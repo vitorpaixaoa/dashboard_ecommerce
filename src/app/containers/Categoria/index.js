@@ -10,8 +10,9 @@ class Categoria extends Component {
     componentDidMount() {
         const { usuario } = this.props;
         const { id } = this.props.match.params;
+        console.log(id)
         if(!usuario || !id ) return null;
-        this.props.getCategorias(id, usuario.loja);
+        this.props.getCategoria(id, usuario.loja);
 
     }
 
