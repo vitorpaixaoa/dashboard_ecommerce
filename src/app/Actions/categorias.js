@@ -43,7 +43,7 @@ export const getCategoria = (id, loja) => {
 
 export const limparCategoria = () => ({ type: LIMPAR_CATEGORIA });
 
-export  const getCategoriaPedidos = (id, atual, limit, loja ) => {
+export  const getCategoriasProdutos = (id, atual, limit, loja ) => {
     return function(dispatch){
         axios.get(
             `${api}/${versao}/api/categorias/${id}/produtos?loja=${loja}&offset=${atual}&limit=${limit}`,

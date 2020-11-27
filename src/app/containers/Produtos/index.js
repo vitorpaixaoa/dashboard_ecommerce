@@ -1,58 +1,67 @@
 import React,{ Component } from 'react';
-
 import Titulo from '../../components/Texto/Titulo';
-import Pesquisa from '../../components/Inputs/Pesquisa'
-import Tabela from '../../components/Tabela/Simples'
-import Paginacao from '../../components/Paginacao/Simples'
+import Pesquisa from '../../components/Inputs/Pesquisa';
+import Tabela from '../../components/Tabela/Simples';
+import Paginacao from '../../components/Paginacao/Simples';
+import { Link } from 'react-router-dom';
 
+
+import * as actions from '../../Actions/produtos';
+import { connect } from 'react-redux';
 
 class Produtos extends Component {
 
     state = {
         pesquisa:"",
-        atual: 0
+        atual: 0,
+        limit: 5,
+        ordem: "alfabetica_a-z"
+    }
+
+    getProdutos(){
+        const { atual, limit, pesquisa, ordem } = this.state;
+        const { usuario } = this.props;
+        if(!usuario) return null;
+
+        if(pesquisa) this.props.getProdutosPesquisa(pesquisa, ordem, atual, limit, usuario.loja );
+        else this.props.getProdutos(ordem, atual, limit, usuario.loja)
+
+    }
+
+    componentDidMount(){
+        this.getProdutos();
+    }
+
+    componentDidUpdate(prevProps){
+        if(!prevProps.usuario && this.props.usuario ) this.getProdutos(this.props);
+    }
+
+    handleSubmitPesquisa(){
+        this.setState({ atual: 0 }, () => this.getProdutos(this.props));
     }
 
     onChangePesquisa= (ev) => this.setState({ pesquisa: ev.target.value })
-    changeNumeroAtual = ( atual )  => this.setState({ atual })
+
+    changeNumeroAtual = ( atual )  => this.setState({ atual }, () => this.getProdutos(this.props));
+
+    changeOrdem = ( ev )  => this.setState({ ordem: ev.target.value }, () => this.getProdutos(this.props));
 
     render(){
         
-        const {pesquisa} = this.state
+        const { pesquisa, ordem } = this.state;
+        const { produtos } = this.props;
         
-        //dados
-        const dados = [
-            {
-                "Produto": "Mouse 1",
-                "Categoria": "Acessórios",
-                "Disponível": "sim",
-                "botaoDeDetalhes": "/produto/DASQDWQD1212"
-            },
-            {
-                "Produto": "Mouse 2",
-                "Categoria": "Acessórios",
-                "Disponível": "sim",
-                "botaoDeDetalhes": "/produto/SDASDSACCCC"
-            },
-            {
-                "Produto": "Mouse 3",
-                "Categoria": "Acessórios",
-                "Disponível": "sim",
-                "botaoDeDetalhes": "/produto/ASDASFFFSAAS"
-            },
-            {
-                "Produto": "Mouse 4",
-                "Categoria": "Acessórios",
-                "Disponível": "sim",
-                "botaoDeDetalhes": "/produto/ASDSADCZXXAAA"
-            },
-            {
-                "Produto": "Mouse 5",
-                "Categoria": "Acessórios",
-                "Disponível": "sim",
-                "botaoDeDetalhes": "/produto/SADSAXXXSAAS"
-            },
-        ]
+        const dados = [];
+        (produtos ? produtos.docs : []).forEach((item) => {
+            dados.push({
+                    "Produto": item.titulo,
+                    "Categoria": item.categoria ? item.categoria.nome : "",
+                    "Disponível": (item.disponibilidade ? "Sim" : "Não" ),
+                    "botaoDeDetalhes": `/produto/${item._id}`
+                
+            })
+        })
+        
         return (
         <div className="Produtos full-width">
             <div className="Card">
@@ -64,18 +73,18 @@ class Produtos extends Component {
                                 valor ={pesquisa} 
                                 placeholder={"Pesquise pelo nome do produto, descrição ou categoria."}
                                 onChange={(ev)=> this.onChangePesquisa(ev)}
-                                onClick={ ()=> alert("Pesuisar")}/>    
+                                onClick={ ()=> this.handleSubmitPesquisa()}/>    
                         </div>
                         <div className="flex-1 flex vertical">
                                 <label>
                                     <small>Ordernar Por:</small>
                                 </label>
-                            <select defaultValue="">
+                            <select value={ordem} onChange={this.changeOrdem} >
                                     <option>Aleatório</option>
-                                    <option value={"oaA-Z"}>Alfabética A-Z</option>
-                                    <option value={"oaZ-A"}>Alfabética Z-A</option>
-                                    <option value={"op-menor"}>Menor Preço</option>
-                                    <option value={"op-maior"}>Maior Preço</option>
+                                    <option value={"alfabetica_a-z"}>Alfabética A-Z</option>
+                                    <option value={"alfabetica_z-a"}>Alfabética Z-A</option>
+                                    <option value={"preco-crescente"}>Menor Preço</option>
+                                    <option value={"preco-decrescente"}>Maior Preço</option>
                             </select>
                         </div>
                         <div className="flex-1"></div>
@@ -85,12 +94,17 @@ class Produtos extends Component {
                     cabecalho={["Produto","Categoria", "Disponibilidade"]}
                     dados={dados} />
                 <Paginacao atual={this.state.atual} 
-                total={120} 
-                limite={20} 
+                total={this.props.produtos ? this.props.produtos.total : 0} 
+                limite={this.state.limit} 
                 onClick={(numeroAtual) => this.changeNumeroAtual(numeroAtual) }/>
             </div>         
         </div>)
     }
 }
 
-export default Produtos
+const mapStateToProps = state => ({
+    produtos: state.produto.produtos,
+    usuario: state.auth.usuario
+})
+
+export default connect(mapStateToProps, actions)(Produtos)
