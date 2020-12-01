@@ -22,4 +22,5 @@
               REMOVE_CATEGORIA = "REMOVE_CATEGORIA",
 
               GET_PRODUTOS = "GET_PRODUTOS",
-              GET_PRODUTO = "GET_PRODUTO"
+              GET_PRODUTO = "GET_PRODUTO",
+              LIMPAR_PRODUTO = "LIMPAR_PRODUTO"

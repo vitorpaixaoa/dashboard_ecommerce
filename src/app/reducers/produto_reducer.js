@@ -1,6 +1,7 @@
 import {
     GET_PRODUTOS,
-    GET_PRODUTO
+    GET_PRODUTO,
+    LIMPAR_PRODUTO
 } from '../Actions/types';
 
 export default ( state = {}, action ) => {
@@ -14,6 +15,11 @@ export default ( state = {}, action ) => {
             return{
                 ...state,
                 produto: action.payload.produto
+            }
+        case LIMPAR_PRODUTO:
+            return{
+                ...state,
+                produto: null
             }
         default:
             return state;
