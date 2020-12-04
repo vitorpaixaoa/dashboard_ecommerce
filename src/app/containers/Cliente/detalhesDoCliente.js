@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../Actions/clientes'
 import AlertGeral from '../../components/Alert/Geral'
 import Voltar from '../../components/Links/Voltar';
+import { get } from 'request';
 
 class DetalhesDoCliente extends React.Component{
 
@@ -278,7 +279,8 @@ class DetalhesDoCliente extends React.Component{
 
 const mapStateToProps = state => ({
     cliente: state.cliente.cliente,
-    usuario: state.auth.usuario 
+    usuario: state.auth.usuario,
+    produto: state.produto.produto
 })
 
 export default connect(mapStateToProps, actions)(DetalhesDoCliente)

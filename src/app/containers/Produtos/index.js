@@ -61,12 +61,13 @@ class Produtos extends Component {
         const { pesquisa, ordem } = this.state;
         const { produtos } = this.props;
         
+        console.log(this.props.produtos)
         const dados = [];
         (produtos ? produtos.docs : []).forEach((item) => {
             dados.push({
                     "Produto": item.titulo,
                     "Categoria": item.categoria ? item.categoria.nome : "",
-                    "Disponível": (item.disponibilidade ? "Sim" : "Não" ),
+                    "Disponível": (item.disponibilidade ? "sim" : "não" ),
                     "botaoDeDetalhes": `/produto/${item._id}`
                 
             })
@@ -104,7 +105,7 @@ class Produtos extends Component {
                 </div>
                 <br/>
                 <Tabela 
-                    cabecalho={["Produto","Categoria", "Disponibilidade"]}
+                    cabecalho={["Produto","Categoria", "Disponível"]}
                     dados={dados} />
                 <Paginacao atual={this.state.atual} 
                 total={this.props.produtos ? this.props.produtos.total : 0} 

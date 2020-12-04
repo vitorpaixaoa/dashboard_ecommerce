@@ -55,7 +55,7 @@ export const updateProduto = ( produto, id, loja, cb ) => {
         axios.put(`${api}/${versao}/api/produtos/${id}?loja=${loja}`,{
             titulo: produto.nome,
             descricao: produto.descricao,
-            diposnibilidade: produto.disponibilidade === "disponivel" ? "true" : "false",
+            disponibilidade: produto.disponibilidade === "disponivel" ? "true" : "false",
             categoria: produto.categoria,
             preco: produto.preco,
             promocao: produto.promocao,
@@ -69,10 +69,10 @@ export const updateProduto = ( produto, id, loja, cb ) => {
     }
 }
 
-export const removeProdutoImagens = ( fotos, id, loja, cb ) => {
+export const removeProdutoImagens = (fotos, id, loja, cb) => {
     return function(dispatch){
-        axios.put(`${api}/${versao}/api/produtos/${id}?loja=${loja}`,{ fotos }, getHeaders() )
-        .then( response => {
+        axios.put(`${api}/${versao}/api/produtos/${id}?loja=${loja}`, { fotos }, getHeaders())
+        .then(response => {
             dispatch({ type: GET_PRODUTO, payload: response.data });
             cb(null);
         })
@@ -80,10 +80,10 @@ export const removeProdutoImagens = ( fotos, id, loja, cb ) => {
     }
 }
 
-export const updateProdutoImagens = ( data, id, loja, cb ) => {
+export const updateProdutoImagens = (data, id, loja, cb) => {
     return function(dispatch){
-        axios.put(`${api}/${versao}/api/produtos/images/${id}?loja=${loja}`, data , getHeaders() )
-        .then( response => {
+        axios.put(`${api}/${versao}/api/produtos/images/${id}?loja=${loja}`, data, getHeaders())
+        .then(response => {
             dispatch({ type: GET_PRODUTO, payload: response.data });
             cb(null);
         })

@@ -46,7 +46,7 @@ class ListaDeProdutos extends Component {
             dados.push({
                 "Produto": item.titulo,
                 "SKU":  item.sku,
-                "Disponibilidade": item.disponibilidade ? "Disponivel" : "Indisponivel",
+                "Disponibilidade": item.disponibilidade ? "Disponível" : "Indisponível",
                 "botaoDeDetalhes": `/produto/${item._id}`
             });
         });

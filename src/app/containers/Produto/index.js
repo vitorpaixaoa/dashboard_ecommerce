@@ -37,4 +37,4 @@ const mapStateToProps = state => ({
     usuario: state.auth.usuario
 })
 
-export default connect(mapStateToProps, { ...actionsCategorias, ...actionsCategorias })(Produto)
+export default connect(mapStateToProps, { ...actionsCategorias, ...actionsProdutos })(Produto)
