@@ -24,9 +24,9 @@ class Produto extends Component {
                 <div className="Card">
                     <DetalhesProduto history={this.props.history} />
                 </div>
-                {/*<div className="">
+                <div className="">
                     <DetalhesVariacoes />
-                </div> */}
+                </div> 
 
             </div>
         )

@@ -23,4 +23,9 @@
 
               GET_PRODUTOS = "GET_PRODUTOS",
               GET_PRODUTO = "GET_PRODUTO",
-              LIMPAR_PRODUTO = "LIMPAR_PRODUTO"
+              LIMPAR_PRODUTO = "LIMPAR_PRODUTO",
+
+              GET_VARIACOES = 'GET_VARIACOES',
+              GET_VARIACAO = 'GET_VARIACAO',
+              LIMPAR_VARIACAO = "LIMPAR_VARIACAO",
+              REMOVE_VARIACAO = "REMOVE_VARIACAO"
