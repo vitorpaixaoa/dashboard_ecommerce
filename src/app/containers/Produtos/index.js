@@ -29,7 +29,8 @@ class Produtos extends Component {
     }
 
     componentDidMount(){
-        this.getProdutos();
+        this.getProdutos(this.props);
+        this.props.limparProduto();
     }
 
     componentDidUpdate(prevProps){
@@ -60,8 +61,6 @@ class Produtos extends Component {
         
         const { pesquisa, ordem } = this.state;
         const { produtos } = this.props;
-        
-        console.log(this.props.produtos)
         const dados = [];
         (produtos ? produtos.docs : []).forEach((item) => {
             dados.push({

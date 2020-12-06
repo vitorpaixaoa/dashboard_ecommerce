@@ -40,7 +40,7 @@ class DetalhesProdutos extends Component{
     componentDidUpdate(prevProps){
         if(
             ( !prevProps.produto && this.props.produto ) ||
-            ( prevProps.produto & this.props.produto &&
+            ( prevProps.produto && this.props.produto &&
               prevProps.produto.updatedAt !== this.props.produto.updatedAt  )
         ) this.setState(this.generateStateProduto(this.props))
     }
