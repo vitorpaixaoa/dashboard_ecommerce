@@ -3,22 +3,64 @@ import ButtonSimples from '../../components/Button/Simples';
 import Voltar from '../../components/Links/Voltar';
 import Titulo from '../../components/Texto/Titulo';
 
+import AlertGeral from '../../components/Alert/Geral';
+import { connect } from 'react-redux';
+import * as actions from '../../Actions/avaliacoes';
+
 
 
 class Avaliacao extends Component {
 
+    state = {
+        aviso: null
+    }
+
+    getAvaliacao(props){
+        const { usuario, produto } = props;
+        if(!usuario || !produto) return;
+        const { id: avaliacao } = props.match.params;
+        this.props.getAvaliacao(avaliacao, produto._id, usuario.loja);
+    }
+
+    componentDidMount(){
+        this.getAvaliacao(this.props);
+    }
+
+    componentDidUpdate(prevProps){
+        if(
+            ( !prevProps.usuario || !prevProps.produto) &&
+            this.props.usuario && this.props.produto
+        ) this.getAvaliacao(this.props);
+    }
+
+    componentWillUnmount(){
+        this.props.limparAvaliacao()
+    }
+
+    removeAvaliacao(){
+        const { usuario, produto, avaliacao } = this.props;
+        if(!usuario || !produto || !avaliacao) return null;
+        if(window.confirm("Você realmente deseja remover essa avaliação ?")){
+            this.props.removeAvaliacao(avaliacao._id, produto._id, usuario.loja, (error) => {
+                if(error) return this.setState({ aviso: { status: false, msg: error.message }});
+                else this.props.history.goBack();
+            });
+        }
+    }
+
 
     renderCabecalho(){
+        const { avaliacao, produto } = this.props;
         return(
             <div className="flex">
                 <div className="flex-1 flex vertical">
-                    <Titulo tipo="h3" titulo="Avaliação - Produto 1 "/>
-                    <Titulo tipo="h4" titulo="Cliente - Cliente 1" />
+                    <Titulo tipo="h3" titulo={`Avaliação -  ${ produto ? produto.titulo : ""} - ${ avaliacao ? avaliacao.pontuacao : ""} estrelas  `}/>
+                    <Titulo tipo="h4" titulo={`Cliente - ${ avaliacao ? avaliacao.nome : ""}`} />
                 </div>
                 <div className="flex-1 flex flex-end">
                     <ButtonSimples 
                         type="danger"
-                        onClick={()=> alert("Deletado")}
+                        onClick={()=> this.removeAvaliacao()}
                         label="Remover"
                     />
                 </div>
@@ -27,21 +69,19 @@ class Avaliacao extends Component {
     }
 
     renderMensagem(){
+        const { avaliacao } = this.props;
         return(
-            <div className="Mensagem">
-                <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-            </div>
+            <div className="Mensagem">{ avaliacao ? avaliacao.texto : "..."}</div>
         )
     }
 
 
     render(){
         return(
-            <div className="Avaliacao">
+            <div className="Avaliacao full-width">
                 <div className="Card">
-                    <Voltar path="/avaliacoes/19h29he12eh" />
+                    <Voltar path={this.props.history} />
+                    <AlertGeral aviso={this.state.aviso} />
                     {this.renderCabecalho()}
                     {this.renderMensagem()}
 
@@ -53,4 +93,10 @@ class Avaliacao extends Component {
 
 }
 
-export default Avaliacao;
+const mapStateToProps = state => ({
+    usuario: state.auth.usuario,
+    produto: state.produto.produto,
+    avaliacao: state.avaliacao.avaliacao
+})
+
+export default connect(mapStateToProps, actions)(Avaliacao);
