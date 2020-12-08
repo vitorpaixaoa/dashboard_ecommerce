@@ -70,6 +70,8 @@ Este projeto foi desenvolvido para a criação do meu E-Commerce o objetivo da d
 #### Ferramentas
 - [**VS CODE**]()
 <hr/>
+#### RODANDO APLICAÇÃO
+Para rodar use "npm install" e depois "npm start", precisa da <a href="https://github.com/vitorpaixaoa/api_rest_ecommerce"> <strong> Ecommerce-API </strong> </a> rodando para funcionar.
 
 <!--License session-->
 ## 📝 Licença
