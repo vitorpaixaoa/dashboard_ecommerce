@@ -30,7 +30,7 @@ Este projeto foi desenvolvido para a criação do meu E-Commerce o objetivo da d
 <!--Funcionalidades-->
 ## ⚙️Funcionalidades
 
-  Nele o usuário (que precisa ser um administrador) poderá ter informações sobre os pedidos feitos na loja, editar situação de entrega, pagamento além de poder adicionar/editar produtos, as categorias onde eles estão inclusos ou suas imagens. Também já está presente a página de LOGIN do usuário e também a recuperação de senha. No momento está com dados estáticos, mas em breve será conectado com a API que também está disponível no GitHub em <a href="https://github.com/vitorpaixaoa/api_rest_ecommerce"> <strong> Ecommerce-API </strong> </a>
+  Nele o usuário (que precisa ser um administrador) poderá ter informações sobre os pedidos feitos na loja, editar situação de entrega, pagamento além de poder adicionar/editar produtos, as categorias onde eles estão inclusos ou suas imagens. Também já está presente a página de LOGIN do usuário e também a recuperação de senha.Para o funcionamento, o sistema precisa estar conectado com a API que também está disponível no GitHub em <a href="https://github.com/vitorpaixaoa/api_rest_ecommerce"> <strong> Ecommerce-API </strong> </a>
 
 <!--Funcionalidades-->
 ## Como está dividido
