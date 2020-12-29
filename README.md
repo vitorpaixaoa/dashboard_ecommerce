@@ -2,7 +2,7 @@
 
 <p align="center">
   <h1> DASHBOARD </h1>
-   <img src="https://github.com/vitorpaixaoa/siteEcommerce/blob/master/static/img-site/Pagina-inicial.png" alt="Pedidos" />
+   <img src="https://github.com/vitorpaixaoa/dashboard_ecommerce/blob/master/public/img/paginal-inicial.png" alt="Pedidos" />
 </p>
 
 <!-- Badges -->
